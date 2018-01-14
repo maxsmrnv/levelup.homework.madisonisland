@@ -1,0 +1,53 @@
+/* COMMON */
+
+/* HEADER LANGUAGE */
+
+.bg-header-lang_ {
+    background-color: #3399cc;
+}
+
+.header-lang_ {
+    color: white;
+    font-size: 14px;
+    max-width: 1260px;
+    padding: 0px 30px;
+    margin: auto;
+}
+
+/* HEADER */
+
+.header_ {
+    max-width: 1260px;
+    padding: 0px 30px;
+    margin: auto;
+}
+
+.logo_ {
+    color: #3399cc;
+    line-height: 1.1;
+}
+
+.logo_ div:nth-child(1) {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.logo_ div:nth-child(2n) {
+    font-size: 40px;
+    letter-spacing: 14px
+}
+
+.acc-cart_ > * {
+    font-size: 18px;
+    padding-top: 10px;
+    color: grey;
+}
+
+#cart {
+    color: #3399cc;
+}
+
+.acc-cart_ > a:hover {
+    color: #3399cc;
+    text-decoration: none;
+}
