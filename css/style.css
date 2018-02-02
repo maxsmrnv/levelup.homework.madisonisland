@@ -22,6 +22,9 @@
     margin: auto;
 }
 
+/*<!--LOGO-->*/
+
+
 .logo_ {
     color: #3399cc;
     line-height: 1.1;
@@ -37,7 +40,10 @@
     letter-spacing: 14px
 }
 
-.acc-cart_ > * {
+
+
+/*<!--ACCOUNT + CART-->*/
+.account_,.cart_ > * {
     font-size: 18px;
     padding-top: 10px;
     color: grey;
@@ -47,15 +53,21 @@
     color: #3399cc;
 }
 
-.acc-cart_ > a:hover {
+.account_,.cart_ > a:hover {
     color: #3399cc;
     text-decoration: none;
 }
 
-/* MAIN NAVIGATION */
+.cart-menu_{
+    border-radius: 0;
+    font-size: 16px;
+    width: 400px;
+}
+
+/* MAIN NAVIGATION MENU */
 .mainnav_ {
-    max-width: 1260px;
-    padding: 0px 30px;
+    max-width: 1200px;
+    padding: 0 30px;
     margin: auto;
     border-bottom: 1px solid #cfcfcf;
 }
@@ -88,3 +100,114 @@
     display: block;
 }
 
+.work-area_ {
+    max-width: 1260px;
+    padding: 0px 30px;
+    margin: auto;
+}
+
+/*<!--BREADCRUMBS-->*/
+
+.breadcrumbs-custom_ {
+    background-color: white;
+    padding: 0;
+
+}
+
+.breadcrumbs-custom_ a {
+    color: grey;
+    font-size: 12px;
+}
+
+/*SECTION MENU*/
+.presection-menu_ a {
+    color: #3399cc;
+    text-decoration: none;
+}
+
+.section-menu_ {
+    border-top: 1px solid #b7b7b7;
+    border-left: 1px solid #b7b7b7;
+    width: 200px;
+}
+
+.section-menu_ > div {
+    border-bottom: 1px solid #b7b7b7;
+    border-right: 1px solid #b7b7b7;
+}
+
+.section-topic_ {
+    background-color: rgb(246, 246, 246);
+    padding: 5px;
+    color: #858585;
+}
+
+.section-elements_ {
+    padding: 10px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-elements_ a {
+    color: #3399cc;
+    text-decoration: none;
+    padding-right: 4px;
+}
+
+.section-elements_ a:nth-child(2n) {
+    color: #858585;
+}
+
+/*PRODUCT ITEMS*/
+
+.products_ {
+    width: 100%;
+}
+
+.product-tittle_ {
+    font-weight: bold;
+    font-size: 20px;
+    color: gray;
+}
+
+/*<!--VIEW SETTINGS PANNEL-->*/
+
+.view-settings_ {
+    width: 100%;
+    background-color: rgb(246, 246, 246);
+    border-top: 1px solid #b7b7b7;
+    border-bottom: 1px solid #b7b7b7;
+    margin-bottom: 5px;
+}
+
+
+/*<!--ITEMS GRID-->*/
+.item_ {
+    padding: 15px;
+    border: 1px solid #b7b7b7;
+    color: gray;
+    margin: 4px;
+}
+
+.item_ > * {
+    margin-bottom: 5px;
+}
+
+.price_ {
+    color: #515151;
+    font-weight: 500;
+}
+
+.wishlist_, .compare_ {
+    font-size: 14px;
+    text-decoration: none;
+    color: #3399cc;
+}
+
+.btn-custom_ {
+    background-color: #3399cc;
+    width: 100%;
+    color: white;
+    border-radius: 0px;
+}
