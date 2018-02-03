@@ -2,35 +2,37 @@
 
 const addToCartBtns = document.querySelectorAll('.btn-custom_');
 
-const cartMenu = document.getElementById('added-items');
-
-const photoItem = document.querySelectorAll('#added-items');
+const cartMenu = document.querySelectorAll('added-items');
 
 
-let createCartElement = function (photo,name,price) {
+let createCartElement = function (item) {
 
-    console.log(price);
+    let itemPhoto = item.querySelectorAll('.photo_')[0].innerHTML;
+    let itemName = item.querySelectorAll('.item-name_')[0].innerHTML;
+    let itemPrice = item.querySelectorAll('.price_')[0].innerHTML;
 
-    return price
+    let nameDiv=document.createElement("div");
+    let nameText = document.createTextNode(itemName);
+
+
+    nameDiv.appendChild(nameText);
+
+    return `<div>${itemPhoto}</div>`
+
 
 };
 
 
 let addToCart = function (e) {
-    console.log(e.target);
     let item = e.target.parentElement;
-    let itemPhoto = item.querySelectorAll('.photo_')[0];
-    let itemName = item.querySelectorAll('.item-name_')[0];
-    let itemPrice = item.querySelectorAll('.price_')[0];
+    let ss=createCartElement(item);
+    // cartMenu.appendChild(document.createTextNode(ss));
 
-
-    cartMenu.appendChild(itemPhoto.cloneNode(true));
-    cartMenu.appendChild(itemName.cloneNode(true))
 
 };
 
 
-for (let i=0; i<addToCartBtns.length; i++) {
+for (let i = 0; i < addToCartBtns.length; i++) {
     addToCartBtns[i].addEventListener("click", addToCart);
 }
 
