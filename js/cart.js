@@ -5,24 +5,17 @@ const addToCartBtns = document.querySelectorAll('.btn-custom_');
 const cartMenu = document.querySelector('#added-items');
 
 
-function* counter() {
-    for (let i = 0; ; i++) {
-        console.log(i);
-        yield i
-    }
-}
 
+class CartItem {
 
-class CartElement {
-
-    constructor(item) {
-        this.itemPhoto = item.querySelectorAll('.photo_')[0].innerHTML;
-        this.itemName = item.querySelectorAll('.item-name_')[0].innerHTML;
-        this.itemPrice = item.querySelectorAll('.price_')[0].innerHTML;
+    constructor(element) {
+        this.itemPhoto = element.querySelectorAll('.photo_')[0].innerHTML;
+        this.itemName = element.querySelectorAll('.item-name_')[0].innerHTML;
+        this.itemPrice = element.querySelectorAll('.price_')[0].innerHTML;
     }
 
 
-    buildCartElement(qty = 1) {
+    buildCartItem(qty = 1) {
 
         let itemContainer = document.createElement('div');
         itemContainer.classList.add("d-flex", "item-container_", "justify-content-center", "my-1");
@@ -51,25 +44,33 @@ class CartElement {
 }
 
 let cart = {
-    elementsOfCart: {},
+    itemsOfCart: {},
 
     addToCart: function (e) {
-        let item = e.target.parentElement;
-        let element = new CartElement(item);
-        cart.elementsOfCart[element.itemName.trim()] = 1;
-        cartMenu.appendChild(element.buildCartElement());
+        let element = e.target.parentElement;
+        let item = new CartItem(element);
+        if (cart.itemsOfCart[item.itemName.trim()] === undefined) {
+            cart.itemsOfCart[item.itemName.trim()] = 1;
+            cartMenu.appendChild(item.buildCartItem());
+        }
+        else {
+            console.log(item)
+        }
+
+
         setHandler(document.querySelectorAll('.remove-item_'), "click", cart.removeFromCart);
-        console.log(cart.elementsOfCart)
-
-
     },
 
     removeFromCart: function (e) {
-        let item = e.target.parentElement;
-        let itemName = document.querySelectorAll('.item-name_')[0].innerHTML;
-        item.parentNode.removeChild(item);
-        delete cart.elementsOfCart[itemName.trim()];
-        console.log(cart.elementsOfCart)
+        let element = e.target.parentElement;
+        // let itemName = document.querySelectorAll('.item-name_')[0].innerHTML;
+        element.parentNode.removeChild(element);
+        delete cart.itemsOfCart[item.itemName.trim()];
+        console.log(cart.itemsOfCart)
+    },
+
+    getItemCount: function () {
+
     }
 
 };
