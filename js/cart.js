@@ -45,7 +45,7 @@ let cart = {
             <div class="d-flex flex-column justify-content-center">
                 <div class="item-name_">${item.itemName}</div>
                 <div>
-                    <span>PRICE</span>
+                    <span>PRICE:</span>
                     <span class="price_">${item.itemPrice}</span>
                     <span>$</span>
                 </div>
