@@ -66,9 +66,9 @@
                         <div id="added-items">
 
                         </div>
-                        <div class="subtotal-price_ text-uppercase d-flex justify-content-center">
+                        <div class="subtotal-price_ text-uppercase d-flex justify-content-center items-align-center">
                             <span>cart subtotal</span>
-                            <span class="pl-2" id="subtotal-value">$0.00</span>
+                            <input value="0.00" class="pl-2" id="subtotal-value" disabled>
                         </div>
                     </div>
                 </div>
@@ -261,12 +261,15 @@
             <!--ITEMS GRID-->
             <div class="d-flex flex-wrap">
                 <div class="item_ d-flex flex-column align-items-center">
-                        <img class="photo_" src="imgs/1.jpg"/>
+                    <img class="photo_" src="imgs/1.jpg"/>
                     <div class="item-name_ text-uppercase">
                         red pillow
                     </div>
-                    <div class="price_">
-                        110$
+                    <div class="d-flex">
+                        <div class="price_">
+                            110
+                        </div>
+                        <div>$</div>
                     </div>
                     <button type="button" class="btn-custom_ btn text-uppercase">add to cart</button>
                     <a href="#" class="wishlist_">
@@ -278,12 +281,15 @@
                 </div>
 
                 <div class="item_ d-flex flex-column align-items-center">
-                        <img class="photo_" src="imgs/2.jpg"/>
+                    <img class="photo_" src="imgs/2.jpg"/>
                     <div class="item-name_ text-uppercase">
                         white pillow
                     </div>
-                    <div class="price_">
-                        100$
+                    <div class="d-flex">
+                        <div class="price_">
+                            100
+                        </div>
+                        <div>$</div>
                     </div>
                     <button type="button" class="btn-custom_ btn text-uppercase">add to cart</button>
                     <a href="#" class="wishlist_">

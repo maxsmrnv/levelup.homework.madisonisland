@@ -81,12 +81,10 @@
 
 #subtotal-value {
     color: #3399cc;
+    width: 100px;
+    background-color: #b7b7b7;
+    border: none;
 }
-
-.item-qty_ {
-    width: 35px;
-}
-
 
 /* MAIN NAVIGATION MENU */
 .mainnav_ {
@@ -235,21 +233,21 @@
     border-radius: 0;
 }
 
-
-
 /*JS*/
 
 .item-container_ {
-    /*border-bottom: 1px solid #b7b7b7;*/
     width: 100%;
 }
 
 .item-container_:nth-child(2n+1) {
     border-bottom: 1px solid #b7b7b7;
     border-top: 1px solid #b7b7b7;
+}
 
+.item-container_ input {
+    width: 35px;
 }
 
 .remove-item_ {
-background-color: #3399cc;
+    background-color: #3399cc;
 }
