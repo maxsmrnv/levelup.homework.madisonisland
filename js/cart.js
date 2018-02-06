@@ -79,7 +79,7 @@ let cart = {
         else {
             cart.incrItemQty(item, cart.drawSubtotal);
         }
-        // разобраться как повесить хендлеры на изменение инпута
+        // TODO: разобраться как повесить хендлеры на изменение инпута
         // setHandler(document.querySelectorAll('.input-qty_'), "change", cart.updateQty(item));
         // setHandler(document.querySelectorAll('.input-qty_'), "change", cart.drawSubtotal);
     },
