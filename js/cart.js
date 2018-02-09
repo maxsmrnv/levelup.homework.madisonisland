@@ -53,7 +53,7 @@ let cart = {
                 </div>
             </div>
             <!--<i class="remove-item_ fas fa-times"></i>-- Не смог разобраться, как повесить обработчик на этот элемент, поэтому сделал просто кнопку>-->
-            <button class="remove-item_ mr-2 btn ml-2" type="button">X</button>`;
+            <button class="remove-item_  mr-2 btn ml-2" type="button">X</button>`;
 
         itemContainer.innerHTML = itemTemplate.trim();
 
@@ -77,7 +77,6 @@ let cart = {
         else {
             cart.incrItemQty(item, cart.drawSubtotal);
         }
-        // TODO: разобраться как повесить хендлеры на изменение инпута
         setHandler(document.querySelectorAll('.input-qty_'), "input", (e)=>{cart.updateQty(item,e.target.value)});
         setHandler(document.querySelectorAll('.input-qty_'), "input", cart.drawSubtotal);
     },

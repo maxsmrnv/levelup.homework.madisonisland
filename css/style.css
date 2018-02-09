@@ -250,4 +250,6 @@
 
 .remove-item_ {
     background-color: #3399cc;
+    border-radius: 0;
+    color: white;
 }
