@@ -21,12 +21,10 @@ class CartItem {
         this.itemName = element.querySelectorAll('.item-name_')[0].innerHTML.trim();
         this.itemPrice = element.querySelectorAll('.price_')[0].innerHTML.trim();
         this.qty = 1;
+        this.itemId = loseCode(this.itemName + this.itemPrice);
     }
 
-    getItemId() {
-        return loseCode(this.itemName + this.itemPrice)
 
-    }
 
 }
 
@@ -51,7 +49,7 @@ let cart = {
                 </div>
                 <div>
                     <span>QTY:</span>
-                    <input type="number" class="input-qty_" id="${item.getItemId()}-qty_" value="${item.qty}" disabled>
+                    <input type="number" class="input-qty_" id="${item.itemId}-qty_" value="${item.qty}" min="1">
                 </div>
             </div>
             <!--<i class="remove-item_ fas fa-times"></i>-- Не смог разобраться, как повесить обработчик на этот элемент, поэтому сделал просто кнопку>-->
@@ -68,10 +66,10 @@ let cart = {
         let element = e.target.parentNode;
         let item = new CartItem(element);
 
-        if (cart.cartItems[item.getItemId()] === undefined) {
+        if (cart.cartItems[item.itemId] === undefined) {
 
             cart.drawItem(item, (function () {
-                cart.cartItems[item.getItemId()] = {'qty': item.qty, 'price': item.itemPrice}
+                cart.cartItems[item.itemId] = {'qty': item.qty, 'price': item.itemPrice}
             }));
             setHandler(document.querySelectorAll('.remove-item_'), "click", cart.removeFromCart);
             cart.drawSubtotal()
@@ -80,27 +78,27 @@ let cart = {
             cart.incrItemQty(item, cart.drawSubtotal);
         }
         // TODO: разобраться как повесить хендлеры на изменение инпута
-        // setHandler(document.querySelectorAll('.input-qty_'), "change", cart.updateQty(item));
-        // setHandler(document.querySelectorAll('.input-qty_'), "change", cart.drawSubtotal);
+        setHandler(document.querySelectorAll('.input-qty_'), "input", (e)=>{cart.updateQty(item,e.target.value)});
+        setHandler(document.querySelectorAll('.input-qty_'), "input", cart.drawSubtotal);
     },
 
     removeFromCart: function (e) {
         let element = e.target.parentNode;
         let item = new CartItem(element);
-        delete cart.cartItems[item.getItemId()];
+        delete cart.cartItems[item.itemId];
         element.parentNode.removeChild(element);
         cart.drawSubtotal();
     },
 
     incrItemQty: function (item, callback) {
-        let curQty = document.getElementById(`${item.getItemId()}-qty_`).value;
-        document.getElementById(`${item.getItemId()}-qty_`).value = +curQty + 1;
+        let curQty = document.getElementById(`${item.itemId}-qty_`).value;
+        document.getElementById(`${item.itemId}-qty_`).value = +curQty + 1;
         cart.updateQty(item, +curQty + 1);
         callback();
     },
 
     updateQty: function (item, val) {
-        cart.cartItems[item.getItemId()].qty = val;
+        cart.cartItems[item.itemId].qty = val;
     },
 
     drawSubtotal: function () {
