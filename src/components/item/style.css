@@ -1,0 +1,10 @@
+._item {
+    border: 2px solid #61dafb;
+    color: #282c34;
+    width: 200px;
+    height: 300px;
+}
+
+._item > img {
+    width: 150px;
+}

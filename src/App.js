@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {LanguageBar} from './components/LanguageBar/LanguageBar'
+import LanguageBar from './components/LanguageBar'
+import GetItem from './components/item'
 
 export class App extends Component {
     render() {
         return (
-            <LanguageBar langList={['Русский','English']}/>
+            [<LanguageBar langList={['Русский', 'English']}/>
+                ,<GetItem itemPhoto={require('./img/redpillow.png')} itemName="Red Pillow" itemPrice="100"/>
+
+            ]
+
         );
     }
 }
