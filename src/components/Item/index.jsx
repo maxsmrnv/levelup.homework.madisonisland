@@ -1,26 +1,46 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import './style.css';
 
 
-export function _getItem(props) {
 
-    let itemPhoto = props.itemPhoto;
-    let itemName = props.itemName;
-    let itemPrice = props.itemPrice;
+export default class Item extends PureComponent {
+
+    constructor(props) {
+        super(props);
+        this.item = props.item;
+        this.props = props
+    }
 
 
-    return (
-        <div className='_item d-flex flex-column align-items-center m-3'>
-            <div className='_itemName pt-4'>
-                {itemName}
+    btnAction = () => {
+        this.props.addToCart(this.item);
+    };
+
+
+
+
+
+
+    render() {
+
+
+        return (
+            <div className='_item d-flex flex-column align-items-center m-3'>
+                <div className='_itemName pt-4'>
+                    {this.item.itemName}
+                </div>
+                <div className='_imgContainer'>
+                    <img src={this.item.itemPhoto} alt="gde podushka" className='_itemPhoto'/>
+                </div>
+                <div className='d-flex'>
+                    <div>price $</div>
+                    <div>{this.item.itemPrice}</div>
+                </div>
+                <button className='btn mt-3' onClick={this.btnAction}>BUY</button>
             </div>
-            <img src={require('../../img/redpillow.png')} alt="gde podushka" className='_itemPhoto'/>
-            <div className='d-flex'>
-                <div>price $</div>
-                <div>{itemPrice}</div>
-            </div>
-            <button className='btn mt-3'>BUY</button>
-        </div>
-    )
+        )
+    }
 }
+
+

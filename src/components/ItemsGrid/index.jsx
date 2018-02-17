@@ -1,32 +1,28 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import './style.css';
-import {_getItem} from './../Item'
+import Item from './../Item'
 
 
-
-
-export default class itemsGrid extends Component {
+export default class itemsGrid extends PureComponent {
 
     constructor(props) {
         super(props);
         this.goods = props.goods;
+        this.props = props
     }
-
 
 
     render() {
 
         return (
-
-            this.goods.map((el)=>{
-                return _getItem(el)
-            })
+            <div className='d-flex flex-wrap'>
+                {this.goods.map((el) => {
+                    return <Item item={el} addToCart={this.props.addToCart}/>
+                })}
+            </div>
         )
     }
-
-
-
 
 
 }

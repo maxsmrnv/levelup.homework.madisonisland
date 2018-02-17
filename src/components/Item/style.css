@@ -15,3 +15,10 @@
     border-radius: 0;
     width: 95%;
 }
+
+._imgContainer {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+}
