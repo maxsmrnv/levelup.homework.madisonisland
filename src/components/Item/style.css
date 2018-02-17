@@ -1,0 +1,17 @@
+._item {
+    border: 2px solid #282c34;
+    color: #282c34;
+    width: 200px;
+    height: 300px;
+}
+
+._item > img {
+    width: 150px;
+}
+
+._item > button {
+    color: #61dafb;
+    background-color: #282c34;
+    border-radius: 0;
+    width: 95%;
+}
