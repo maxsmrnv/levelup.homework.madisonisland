@@ -19,9 +19,6 @@ export default class Item extends PureComponent {
 
 
 
-
-
-
     render() {
 
 

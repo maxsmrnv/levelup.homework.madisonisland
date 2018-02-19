@@ -18,27 +18,30 @@ export class App extends Component {
 
 
     getItemIfInCart = (item) => {
-        console.log('check');
+        for (let i = 0; i < this.state.cartStorage.length; i++) {
+            if (this.state.cartStorage[i].itemId === item.itemId) {
+                return i
+
+            }
+        }
 
     };
 
     addToCart = (item) => {
-        // this.setState({
-        //     cartStorage: [...this.state.cartStorage, item]
-        // })
-        if (this.state.cartStorage.length) {
 
-            for (let i = 0; i < this.state.cartStorage.length; i++) {
-                if (item.itemId === this.state.cartStorage[i].itemId) {
-                    console.log(this.state.cartStorage);
-                    this.setState({
-                         qty: this.state.cartStorage[i].qty += 1
-                        // cartStorage: this.state.cartStorage[i].qty+1
-                    });
-                    console.log(this.state.cartStorage)
+        const cartIndex = this.getItemIfInCart(item);
 
-                }
-            }
+        if (cartIndex !== undefined) {
+
+            this.setState({
+                cartStorage: [
+                    ...this.state.cartStorage.slice(0, cartIndex),
+                    {...item, qty: this.state.cartStorage[cartIndex].qty + 1},
+                    ...this.state.cartStorage.slice(cartIndex + 1)
+
+                ]
+            });
+
         }
         else {
             this.setState(prevState => ({
@@ -46,14 +49,8 @@ export class App extends Component {
             }))
         }
 
-
     };
 
-
-    getCartItems = () => {
-        console.log(this.state.cartStorage)
-
-    };
 
     render() {
         return (

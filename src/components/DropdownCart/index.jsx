@@ -10,6 +10,14 @@ export default class DropdownCart extends PureComponent {
         this.props = props;
     }
 
+    calcTotalPrice= () =>{
+        let cartSum=0;
+        for (let i=0;i<this.props.cartStorage.length;i++){
+            cartSum+=this.props.cartStorage[i].itemPrice*this.props.cartStorage[i].qty
+        }
+        return cartSum
+    };
+
 
     render() {
 
@@ -55,7 +63,7 @@ export default class DropdownCart extends PureComponent {
                                 className="subtotal-price_ text-uppercase d-flex justify-content-center items-align-center">
                                 <span>cart subtotal</span>
                                 <span className="pl-3">$</span>
-                                <span className="pl-2" id="subtotal-value">0.00</span>
+                                <span className="pl-2" id="subtotal-value">{this.calcTotalPrice()}</span>
                             </div>
                         </div>
                     </div>
