@@ -16,16 +16,38 @@ export class App extends Component {
 
     }
 
+
+    getItemIfInCart = (item) => {
+        console.log('check');
+
+    };
+
     addToCart = (item) => {
         // this.setState({
         //     cartStorage: [...this.state.cartStorage, item]
         // })
+        if (this.state.cartStorage.length) {
 
-        this.setState(prevState => ({
-            cartStorage: [...prevState.cartStorage, item]
-        }))
+            for (let i = 0; i < this.state.cartStorage.length; i++) {
+                if (item.itemId === this.state.cartStorage[i].itemId) {
+                    console.log(this.state.cartStorage);
+                    this.setState({
+                         qty: this.state.cartStorage[i].qty += 1
+                        // cartStorage: this.state.cartStorage[i].qty+1
+                    });
+                    console.log(this.state.cartStorage)
+
+                }
+            }
+        }
+        else {
+            this.setState(prevState => ({
+                cartStorage: [...prevState.cartStorage, {...item, qty: 1}]
+            }))
+        }
+
+
     };
-
 
 
     getCartItems = () => {

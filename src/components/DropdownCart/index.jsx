@@ -28,7 +28,7 @@ export default class DropdownCart extends PureComponent {
                             <div className='d-flex flex-column' id="added-items">
                                 {this.props.cartStorage && this.props.cartStorage.map((item) => {
                                     return (
-                                        <div className='_cartItemContainer d-flex flex-row align-items-center'>
+                                        <div className='_cartItemContainer d-flex align-items-center'>
                                             <img src={item.itemPhoto} alt="gde podushka" className='pr-1'/>
                                             <div className='d-flex flex-column align-items-center'>
                                                 <div>
@@ -37,7 +37,16 @@ export default class DropdownCart extends PureComponent {
                                                 <div>
                                                     ${item.itemPrice}
                                                 </div>
+                                                <div className='d-flex'>
+                                                    <div>
+                                                        QTY:
+                                                    </div>
+                                                    <div>
+                                                        {item.qty}
+                                                    </div>
+                                                </div>
                                             </div>
+
                                         </div>
                                     )
                                 })}

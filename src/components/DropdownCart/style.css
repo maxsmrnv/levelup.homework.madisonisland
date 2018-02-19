@@ -58,7 +58,10 @@
 }
 
 ._cartItemContainer > img {
-    width: 100px;
+    width: 120px;
     height: auto;
 }
 
+._cartItemContainer > div {
+    width: 100%;
+}
