@@ -65,3 +65,8 @@
 ._cartItemContainer > div {
     width: 100%;
 }
+
+._btnScale {
+    border: 1px solid #282c34;
+    color: #282c34;
+}

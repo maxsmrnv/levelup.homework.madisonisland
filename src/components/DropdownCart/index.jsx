@@ -10,6 +10,8 @@ export default class DropdownCart extends PureComponent {
         this.props = props;
     }
 
+
+
     calcTotalPrice= () =>{
         let cartSum=0;
         for (let i=0;i<this.props.cartStorage.length;i++){
@@ -45,13 +47,15 @@ export default class DropdownCart extends PureComponent {
                                                 <div>
                                                     ${item.itemPrice}
                                                 </div>
-                                                <div className='d-flex'>
-                                                    <div>
+                                                <div className='d-flex align-items-center'>
+                                                    <button className='_btnScale btn' onClick={()=>this.props.updItemQty(item,-1)}>-</button>
+                                                    <div className='p-1'>
                                                         QTY:
                                                     </div>
-                                                    <div>
+                                                    <div className='p-1'>
                                                         {item.qty}
                                                     </div>
+                                                    <button className='_btnScale btn' onClick={()=>this.props.updItemQty(item)}>+</button>
                                                 </div>
                                             </div>
 
