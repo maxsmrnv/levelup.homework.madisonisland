@@ -67,6 +67,23 @@
 }
 
 ._btnScale {
-    border: 1px solid #282c34;
+    border: 1px solid white;
     color: #282c34;
+    background-color: white;
+    width: 40px;
+    border-radius: 0;
+    font-weight: bold;
+
 }
+
+._btnRemove {
+    border: 1px solid white;
+    color: #282c34;
+    background-color: white;
+    padding: 3px;
+    border-radius: 0;
+    margin-top: 2px;
+    font-weight: bold;
+
+}
+

@@ -11,13 +11,21 @@ export default class DropdownCart extends PureComponent {
     }
 
 
-
-    calcTotalPrice= () =>{
-        let cartSum=0;
-        for (let i=0;i<this.props.cartStorage.length;i++){
-            cartSum+=this.props.cartStorage[i].itemPrice*this.props.cartStorage[i].qty
+    calcTotalPrice = () => {
+        let cartSum = 0;
+        for (let i = 0; i < this.props.cartStorage.length; i++) {
+            cartSum += this.props.cartStorage[i].itemPrice * this.props.cartStorage[i].qty
         }
         return cartSum
+    };
+
+    increaseQty = (item) => {
+        this.props.updItemQty(item)
+
+    };
+
+    decreaseQty = (item) => {
+        this.props.updItemQty(item, -1)
     };
 
 
@@ -48,17 +56,25 @@ export default class DropdownCart extends PureComponent {
                                                     ${item.itemPrice}
                                                 </div>
                                                 <div className='d-flex align-items-center'>
-                                                    <button className='_btnScale btn' onClick={()=>this.props.updItemQty(item,-1)}>-</button>
+                                                    <button className='_btnScale btn'
+                                                            onClick={() => this.decreaseQty(item)}>&#9660;
+                                                    </button>
                                                     <div className='p-1'>
                                                         QTY:
                                                     </div>
                                                     <div className='p-1'>
                                                         {item.qty}
                                                     </div>
-                                                    <button className='_btnScale btn' onClick={()=>this.props.updItemQty(item)}>+</button>
+                                                    <button className='_btnScale btn'
+                                                            onClick={() => this.increaseQty(item)}>&#9650;
+                                                    </button>
                                                 </div>
                                             </div>
-
+                                            <div className='d-flex flex-column h-100'>
+                                                <button className='_btnRemove btn'
+                                                        onClick={() => this.props.removeFromCart(item)}>&times;
+                                                </button>
+                                            </div>
                                         </div>
                                     )
                                 })}

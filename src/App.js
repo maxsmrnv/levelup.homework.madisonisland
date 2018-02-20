@@ -27,22 +27,26 @@ export class App extends Component {
 
     };
 
-    addToCart = (item,scale=1) => {
+    addToCart = (item, scale = 1) => {
 
         const cartIndex = this.getItemIfInCart(item);
 
         if (cartIndex !== undefined) {
 
-            // if (this.state.cartStorage[cartIndex].qty + scale)===0 {}
+            if (this.state.cartStorage[cartIndex].qty + scale === 0) {
 
-            this.setState({
-                cartStorage: [
-                    ...this.state.cartStorage.slice(0, cartIndex),
-                    {...item, qty: this.state.cartStorage[cartIndex].qty + scale},
-                    ...this.state.cartStorage.slice(cartIndex + 1)
+                this.removeFromCart(item)
+            }
+            else {
+                this.setState({
+                    cartStorage: [
+                        ...this.state.cartStorage.slice(0, cartIndex),
+                        {...item, qty: this.state.cartStorage[cartIndex].qty + scale},
+                        ...this.state.cartStorage.slice(cartIndex + 1)
 
-                ]
-            });
+                    ]
+                })
+            }
 
         }
         else {
@@ -65,15 +69,15 @@ export class App extends Component {
 
                 ]
             });
-    }};
-
-
+        }
+    };
 
 
     render() {
         return (
             [<LanguageBar langList={['Русский', 'English']}/>,
-                <DropdownCart cartStorage={this.state.cartStorage} updItemQty={this.addToCart} removeFromCart={this.removeFromCart}/>,
+                <DropdownCart cartStorage={this.state.cartStorage} updItemQty={this.addToCart}
+                              removeFromCart={this.removeFromCart}/>,
                 <ItemsGrid goods={dbGoods} addToCart={this.addToCart}/>,
             ]
 
