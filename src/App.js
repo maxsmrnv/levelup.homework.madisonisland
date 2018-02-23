@@ -6,6 +6,8 @@ import ItemsGrid from './components/ItemsGrid'
 import DropdownCart from './components/DropdownCart'
 
 
+
+
 export class App extends Component {
 
     constructor() {
@@ -84,5 +86,6 @@ export class App extends Component {
         );
     }
 }
+
 
 export default App;

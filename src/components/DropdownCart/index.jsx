@@ -2,13 +2,18 @@ import React, {PureComponent} from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import './style.css';
 
+import {connect} from 'react-redux'
 
-export default class DropdownCart extends PureComponent {
 
-    constructor(props) {
-        super(props);
-        this.props = props;
-    }
+export class DropdownCart extends PureComponent {
+
+    // constructor(props) {
+    //     super(props);
+    //     // this.props = props;
+    //     // console.log(this.props.CartItems)
+    // }
+
+
 
 
     calcTotalPrice = () => {
@@ -44,7 +49,7 @@ export default class DropdownCart extends PureComponent {
                         <div className="d-flex flex-column align-items-center">
                             <div className="cart-msg_ text-uppercase">recently added items</div>
                             <div className='d-flex flex-column' id="added-items">
-                                {this.props.cartStorage && this.props.cartStorage.map((item) => {
+                                {this.props.CartItems && this.props.CartItems.map((item) => {
                                     return (
                                         <div className='_cartItemContainer d-flex align-items-center'>
                                             <img src={item.itemPhoto} alt="gde podushka" className='pr-1'/>
@@ -97,3 +102,11 @@ export default class DropdownCart extends PureComponent {
 }
 
 
+
+
+export default connect(
+    state=>({
+        CartItems:state.CartItems
+    }),
+    dispatch =>({})
+)(DropdownCart)
