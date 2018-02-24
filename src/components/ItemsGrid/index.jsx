@@ -2,28 +2,27 @@ import React, {PureComponent} from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import './style.css';
 import Item from './../Item'
+import {connect} from "react-redux";
 
 
-export default class itemsGrid extends PureComponent {
-
-    constructor(props) {
-        super(props);
-        this.goods = props.goods;
-        this.props = props
-    }
+export class itemsGrid extends PureComponent {
 
 
     render() {
 
         return (
             <div className='d-flex flex-wrap'>
-                {this.goods.map((el) => {
-                    return <Item item={el} addToCart={this.props.addToCart}/>
+                {this.props.Items.map((el) => {
+                    return <Item item={el}/>
                 })}
             </div>
         )
     }
-
-
 }
 
+export default connect(
+    state => ({
+        Items: state.Items
+    }),
+    dispatch => ({})
+)(itemsGrid)

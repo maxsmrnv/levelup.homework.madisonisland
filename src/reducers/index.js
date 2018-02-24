@@ -1,6 +1,8 @@
-import CartItems from './CartItems.reducer'
+import Cart from './Cart.reducer'
+import Items from './Items.reducer'
 
 
 export default {
-    CartItems
+    Items,
+    Cart
 }

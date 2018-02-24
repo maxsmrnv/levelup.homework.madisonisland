@@ -7,30 +7,31 @@ import {connect} from 'react-redux'
 
 export class DropdownCart extends PureComponent {
 
-    // constructor(props) {
-    //     super(props);
-    //     // this.props = props;
-    //     // console.log(this.props.CartItems)
-    // }
-
-
-
 
     calcTotalPrice = () => {
         let cartSum = 0;
-        for (let i = 0; i < this.props.cartStorage.length; i++) {
-            cartSum += this.props.cartStorage[i].itemPrice * this.props.cartStorage[i].qty
+        for (let i = 0; i < this.props.Cart.length; i++) {
+            cartSum += this.props.Cart[i].itemPrice * this.props.Cart[i].qty
         }
         return cartSum
     };
 
-    increaseQty = (item) => {
-        this.props.updItemQty(item)
-
+    getItemIndex = (item) => {
+        for (let i = 0; i < this.props.Cart.length; i++) {
+            if (this.props.Cart[i].itemId === item.itemId) {
+                return i
+            }
+        }
     };
 
-    decreaseQty = (item) => {
-        this.props.updItemQty(item, -1)
+    actionOnPlusBtn = (item) => {
+        const itemIndex = this.getItemIndex(item);
+        this.props.increaseQty(item, itemIndex)
+    };
+
+    actionOnMinusBtn = (item) => {
+        const itemIndex = this.getItemIndex(item);
+        this.props.decreaseQty(item, itemIndex);
     };
 
 
@@ -49,7 +50,7 @@ export class DropdownCart extends PureComponent {
                         <div className="d-flex flex-column align-items-center">
                             <div className="cart-msg_ text-uppercase">recently added items</div>
                             <div className='d-flex flex-column' id="added-items">
-                                {this.props.CartItems && this.props.CartItems.map((item) => {
+                                {this.props.Cart && this.props.Cart.map((item) => {
                                     return (
                                         <div className='_cartItemContainer d-flex align-items-center'>
                                             <img src={item.itemPhoto} alt="gde podushka" className='pr-1'/>
@@ -62,7 +63,9 @@ export class DropdownCart extends PureComponent {
                                                 </div>
                                                 <div className='d-flex align-items-center'>
                                                     <button className='_btnScale btn'
-                                                            onClick={() => this.decreaseQty(item)}>&#9660;
+                                                            onClick={() => {
+                                                                this.actionOnMinusBtn(item)
+                                                            }}>&#9660;
                                                     </button>
                                                     <div className='p-1'>
                                                         QTY:
@@ -71,13 +74,17 @@ export class DropdownCart extends PureComponent {
                                                         {item.qty}
                                                     </div>
                                                     <button className='_btnScale btn'
-                                                            onClick={() => this.increaseQty(item)}>&#9650;
+                                                            onClick={() => {
+                                                                this.actionOnPlusBtn(item)
+                                                            }}>&#9650;
                                                     </button>
                                                 </div>
                                             </div>
                                             <div className='d-flex flex-column h-100'>
                                                 <button className='_btnRemove btn'
-                                                        onClick={() => this.props.removeFromCart(item)}>&times;
+                                                        onClick={() => {
+                                                            this.props.removeItem(this.getItemIndex(item))
+                                                        }}>&times;
                                                 </button>
                                             </div>
                                         </div>
@@ -94,19 +101,25 @@ export class DropdownCart extends PureComponent {
                     </div>
                 </a>
             </div>
-
         )
     }
-
-
 }
 
 
-
-
 export default connect(
-    state=>({
-        CartItems:state.CartItems
+    state => ({
+        Cart: state.Cart
     }),
-    dispatch =>({})
+    dispatch => ({
+        increaseQty: (item, itemIndex) => {
+            dispatch({type: 'INCREASE_QTY', item: item, itemIndex: itemIndex});
+        },
+        decreaseQty: (item, itemIndex) => {
+            dispatch({type: 'DECREASE_QTY', item: item, itemIndex: itemIndex});
+        },
+        removeItem: (itemIndex) => {
+            dispatch({type: 'REMOVE_ITEM', itemIndex: itemIndex});
+        }
+    })
 )(DropdownCart)
+
