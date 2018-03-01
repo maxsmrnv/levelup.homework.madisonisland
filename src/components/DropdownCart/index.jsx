@@ -16,6 +16,14 @@ export class DropdownCart extends Component {
         return cartSum
     };
 
+    calcTotalQty = () => {
+        let totalQty = 0;
+        for (let i = 0; i < this.props.Cart.length; i++) {
+            totalQty += this.props.Cart[i].qty
+        }
+        return totalQty
+    };
+
 
     actionOnPlusBtn = (item) => {
         this.props.increaseQty(item)
@@ -37,13 +45,14 @@ export class DropdownCart extends Component {
                     <div className="text-uppercase" id="cart">
                         cart
                     </div>
+                    <span className='pl-1'>({this.calcTotalQty()})</span>
                     <div className="cart-menu_ dropdown-menu p-3">
                         <div className="d-flex flex-column align-items-center">
                             <div className="cart-msg_ text-uppercase">recently added items</div>
                             <div className='d-flex flex-column' id="added-items">
-                                {this.props.Cart && this.props.Cart.map((item,i) => {
+                                {this.props.Cart && this.props.Cart.map((item, i) => {
                                     return (
-                                        <div key={'cart_'+i} className='_cartItemContainer d-flex align-items-center'>
+                                        <div key={'cart_' + i} className='_cartItemContainer d-flex align-items-center'>
                                             <img src={item.itemPhoto} alt="gde podushka" className='pr-1'/>
                                             <div className='d-flex flex-column align-items-center'>
                                                 <div>
