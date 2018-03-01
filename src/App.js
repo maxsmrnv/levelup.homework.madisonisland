@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import './App.css';
 import LanguageBar from './components/LanguageBar'
 
@@ -10,10 +10,11 @@ export class App extends Component {
 
     render() {
         return (
-            [<LanguageBar langList={['Русский', 'English']}/>,
-                <DropdownCart/>,
+            <Fragment>
+                <LanguageBar langList={['Русский', 'English']}/>
+                <DropdownCart/>
                 <ItemsGrid/>
-            ]
+            </Fragment>
 
         );
     }

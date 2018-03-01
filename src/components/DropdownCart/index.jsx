@@ -1,11 +1,11 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import './style.css';
 
 import {connect} from 'react-redux'
 
 
-export class DropdownCart extends PureComponent {
+export class DropdownCart extends Component {
 
 
     calcTotalPrice = () => {
@@ -16,22 +16,13 @@ export class DropdownCart extends PureComponent {
         return cartSum
     };
 
-    getItemIndex = (item) => {
-        for (let i = 0; i < this.props.Cart.length; i++) {
-            if (this.props.Cart[i].itemId === item.itemId) {
-                return i
-            }
-        }
-    };
 
     actionOnPlusBtn = (item) => {
-        const itemIndex = this.getItemIndex(item);
-        this.props.increaseQty(item, itemIndex)
+        this.props.increaseQty(item)
     };
 
     actionOnMinusBtn = (item) => {
-        const itemIndex = this.getItemIndex(item);
-        this.props.decreaseQty(item, itemIndex);
+        this.props.decreaseQty(item);
     };
 
 
@@ -50,9 +41,9 @@ export class DropdownCart extends PureComponent {
                         <div className="d-flex flex-column align-items-center">
                             <div className="cart-msg_ text-uppercase">recently added items</div>
                             <div className='d-flex flex-column' id="added-items">
-                                {this.props.Cart && this.props.Cart.map((item) => {
+                                {this.props.Cart && this.props.Cart.map((item,i) => {
                                     return (
-                                        <div className='_cartItemContainer d-flex align-items-center'>
+                                        <div key={'cart_'+i} className='_cartItemContainer d-flex align-items-center'>
                                             <img src={item.itemPhoto} alt="gde podushka" className='pr-1'/>
                                             <div className='d-flex flex-column align-items-center'>
                                                 <div>
@@ -83,7 +74,7 @@ export class DropdownCart extends PureComponent {
                                             <div className='d-flex flex-column h-100'>
                                                 <button className='_btnRemove btn'
                                                         onClick={() => {
-                                                            this.props.removeItem(this.getItemIndex(item))
+                                                            this.props.removeItem(item)
                                                         }}>&times;
                                                 </button>
                                             </div>
@@ -111,14 +102,14 @@ export default connect(
         Cart: state.Cart
     }),
     dispatch => ({
-        increaseQty: (item, itemIndex) => {
-            dispatch({type: 'INCREASE_QTY', item: item, itemIndex: itemIndex});
+        increaseQty: (item) => {
+            dispatch({type: 'INCREASE_QTY', item: item});
         },
-        decreaseQty: (item, itemIndex) => {
-            dispatch({type: 'DECREASE_QTY', item: item, itemIndex: itemIndex});
+        decreaseQty: (item) => {
+            dispatch({type: 'DECREASE_QTY', item: item});
         },
-        removeItem: (itemIndex) => {
-            dispatch({type: 'REMOVE_ITEM', itemIndex: itemIndex});
+        removeItem: (item) => {
+            dispatch({type: 'REMOVE_ITEM', item: item});
         }
     })
 )(DropdownCart)

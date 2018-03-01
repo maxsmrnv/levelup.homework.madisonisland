@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css'
 import './style.css'
 
 
 let selectList = (list) => {
-    return list.map((el) => <option>{el}</option>);
+    return list.map((el,i) => <option key={'lang_'+i}>{el}</option>);
 };
 
 export default function LanguageBar(props) {

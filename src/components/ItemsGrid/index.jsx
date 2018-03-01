@@ -12,8 +12,8 @@ export class itemsGrid extends PureComponent {
 
         return (
             <div className='d-flex flex-wrap'>
-                {this.props.Items.map((el) => {
-                    return <Item item={el}/>
+                {this.props.Items.map((el,i) => {
+                    return <Item key={'item_'+i} item={el}/>
                 })}
             </div>
         )
