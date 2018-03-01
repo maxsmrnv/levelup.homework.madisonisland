@@ -1,0 +1,8 @@
+._languageBar {
+    background-color: #282c34;
+    color: #61dafb;
+}
+
+._languageBar > div {
+    width: 1260px;
+}
