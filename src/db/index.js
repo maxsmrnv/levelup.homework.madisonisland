@@ -43,12 +43,6 @@
          itemPrice: 99
      },
      {
-         itemId: 8,
-         itemName:'black pillow',
-         itemPhoto: require('../img/circle2pillow.png'),
-         itemPrice: 199
-     },
-     {
          itemId: 9,
          itemName:'line pillow',
          itemPhoto: require('../img/linepillow.png'),
